@@ -1,0 +1,14 @@
+{% extends "basicapp/basic.html" %}
+{% block bodyblock %}
+
+  {% if registerd %}
+    <h1>Thanks for registering with us.</h1>
+  {% else %}
+    <form enctype="multipart/form-data" class="form-group" method="POST">
+      {{ userform.as_p }}
+      {{ userinfoform.as_p }}
+      {% csrf_token %}
+      <input type="Submit" class="btn btn-primary" value="Sign up">
+    </form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "basicapp/basic.html" %}
+{% block bodyblock %}
+
+<form class="form-group" method="POST">
+<label for="username">Username:</label>
+<input type="text" name="username"  class="form-control" placeholder="username">
+<label for="password">Password:</label>
+<input type="password" name="password"  class="form-control">
+<input type="submit" name="LogIn">
+  {% csrf_token %}
+</form>
+
+{% endblock %}

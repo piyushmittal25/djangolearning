@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Django</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="{{ activeinfo1 }}"><a  href="{% url 'index' %}" class="navbar-brand">Brand</a></div>
+      <div class="container">
+          <ul class="navbar-nav mr-auto">
+            <li class="{{ activeinfo2 }}"><a class="nav-link nav-item" href="{% url 'admin:index' %}">Admin<a></li>
+            <li class="{{ activeinfo3 }}"><a class="nav-link nav-item" href="{% url 'basicapp:registration' %}">Registration<a></li>
+            {% if user.is_authenticated %}
+            <li class="{{ activeinfo4 }}"><a class="nav-link nav-item" href="{% url 'basicapp:user_logout' %}">LogOut<a></li>
+            {% else %}
+            <li class="{{ activeinfo4 }}"><a class="nav-link nav-item" href="{% url 'basicapp:user_login' %}">LogIn<a></li>
+            {% endif %}
+          </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="jumbotron">
+      {% block bodyblock %}
+      {% endblock %}
+      </div>
+
+    </div>
+  </body>
+</html>
